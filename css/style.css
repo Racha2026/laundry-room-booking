@@ -1,0 +1,79 @@
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+/* Grundlayout för sidan */
+.container{
+    background-image: url("../images/backgroundSS.JPG");
+    background-position: center;
+    background-size: cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    height:100vh;
+}
+
+/* Innehållet i mitten av sidan (titel + knapp) */
+.content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:none;
+
+}
+
+/* Huvudrubrik */
+h1 {
+    color:rgb(255, 255, 255);
+    background:rgba(0,0,0,0.7);
+    padding:8px 18px;
+    display:inline-block;
+    font-size:48px;
+    border-radius:6px;
+    margin-bottom:25px;
+}
+
+/* Bokningsknappen */
+.book-btn{
+
+    background:white;
+    color:black;
+    border:2px solid black;
+    padding:12px 30px;
+    font-size:16px;
+    text-decoration:none;
+}
+
+/* Effekt när musen är över knappen */
+.book-btn:hover{
+    background-color:#1c3d6b;
+    color:white;
+}
+
+/* Anpassning för mindre skärmar (mobil) */
+@media (max-width: 768px){
+
+    .container{
+        flex-direction:column;   
+        justify-content:center;
+        text-align:center;
+        padding:40px;
+    }
+
+    .image-area{
+        justify-content:center;
+        margin-top:30px;
+    }
+
+    .image-area img{
+        width:200px;   /* mindre bild på mobil */
+    }
+
+    h1{
+        font-size:32px;
+    }
+}
