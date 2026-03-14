@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boka tvättid</title>
+<!-- koppla CSS -->
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+    <div class="booking-page">
+
+        <div class="confirm-box">
+            <button class="confirm-btn">Bekräfta</button>
+        </div>
+
+        <h1 class="page-title">Boka tid</h1>
+
+        <div class="booking-content">
+
+            <div class="left-side">
+
+                <div class="date-box">
+                    <button class="day-btn" id="prev-day">◀</button>
+                    <span class="date-text" id="date-text">
+                    22-03-2026 / Söndag   
+                    </span>
+                    <button class="day-btn" id="next-day">▶</button>
+                </div>
+
+                <div class="time-box">
+                    <label class="time-option">
+                        <input type="radio" name="time"> 9:00-12:00
+                    </label>
+
+                    <label class="time-option">
+                        <input type="radio" name="time"> 12:00-15:00
+                    </label>
+
+                    <label class="time-option">
+                        <input type="radio" name="time"> 15:00-18:00
+                    </label>
+
+                    <label class="time-option">
+                        <input type="radio" name="time"> 18:00-21:00
+                    </label>
+                </div>
+
+                <div class="apartment-section">
+                    <p class="error-message">* Du måste ange lägenhetsnummer.</p>
+                    <input class="apartment-input" type="text" id="apartment-number" placeholder="Ange ditt lägenhetsnummer:">
+                </div>
+
+            </div>
+
+            <div class="right-side">
+                <img class="washing-image" src="images/TM1.JPG" alt="Tvättmaskin">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
