@@ -77,3 +77,177 @@ h1 {
         font-size:32px;
     }
 }
+
+/* bokningssidan */
+
+.booking-page{
+    padding:40px;
+    background:white;
+    min-height:100vh;
+}
+
+/* titel */
+
+.page-title{
+    text-align:center;
+    color:white;
+    font-style:italic;
+    width:100%;
+}
+
+/* bekräfta knapp */
+
+.confirm-box{
+    position:absolute;
+    right:40px;
+}
+
+.confirm-btn{
+    background:rgb(255, 255, 255);
+    color:black;
+    border:2px solid black;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top: 49px;
+}
+
+/* layout */
+
+.booking-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:40px;
+}
+
+/* left side */
+
+.left-side{
+    width:350px;
+}
+
+/* date box */
+
+.date-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size: 23px;
+    border:2px solid black;
+    border-radius:12px 12px 0 0;
+    padding:15px;
+    background:#eaeaea;
+    transform: translateX(90px);
+}
+
+/* arrows */
+
+.day-btn{
+    width:35px;
+    height:35px;
+    border-radius:8px;
+    border:1px solid black;
+    background:white;
+    cursor:pointer;
+}
+
+
+/* time slots */
+.time-box{
+    border:2px solid black;
+    border-top:none;
+    border-radius:0 0 12px 12px;
+    padding:20px;
+    background:#eaeaea;
+    transform: translateX(90px);
+}
+
+.time-option{
+    display:block;
+    font-size:24px;
+    margin:20px 0;
+    height: 90px;
+}
+
+/* apartment */
+
+.apartment-section{
+    margin-top:30px;
+}
+
+.error-message{
+    color:red;
+    font-size:14px;
+    margin-top: -110px;
+    margin-left: 400px;
+    white-space:nowrap;
+    transform: translateX(100px);
+}
+
+.apartment-input{
+    width:100%;
+    padding:15px;
+    border-radius:25px;
+    border:2px solid black;
+    margin-left: 380px;
+    margin-top: -1px;
+    background-color: rgba(9, 175, 175, 0.144);
+    transform: translateX(100px);
+}
+
+/* right side */
+
+.washing-image{
+    width:340px;
+    margin-top: 300px;
+    margin-right: 150px;
+    transform: translateY(-150px);
+}
+
+/* mobilanpassning */
+
+@media (max-width: 1446px){
+
+.booking-content{
+    flex-direction:column;
+    align-items:center;
+}
+
+.left-side{
+    width:100%;
+}
+
+.date-box{
+    transform:none;
+    font-size: 20px;
+}
+
+.time-box{
+    transform:none;
+    font-size: 10px;
+    height: 375px;
+}
+
+.error-message{
+    margin:10px 0;
+    transform:none;
+}
+
+.apartment-input{
+    width:100%;
+    margin:0;
+    transform:none;
+}
+
+.washing-image{
+    display: none;
+}
+
+.confirm-box{
+    position:static;
+    text-align:center;
+}
+
+}
