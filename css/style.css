@@ -100,6 +100,7 @@ h1 {
 .confirm-box{
     position:absolute;
     right:40px;
+    margin-top: 55px;
 }
 
 .confirm-btn{
@@ -153,6 +154,10 @@ h1 {
     cursor:pointer;
 }
 
+.day-btn:hover{
+background-color:#1c3d6b;
+color:white;
+}
 
 /* time slots */
 .time-box{
@@ -248,6 +253,131 @@ h1 {
 .confirm-box{
     position:static;
     text-align:center;
+}
+
+}
+
+/* page: alla bokningar */
+
+.all-bookings-page{
+    padding:40px;
+    background:white;
+    min-height:100vh;
+}
+
+.all-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+
+    color:white;
+    font-style:italic;
+    width:100%;
+}
+
+.bookings-layout{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.bookings-box{
+    width:420px;
+    background:#eaeaea;
+    border:2px solid black;
+    border-radius:12px;
+    overflow:hidden;
+    transform: translateX(39px);
+}
+
+.bookings-date{
+    padding:20px;
+    font-size:22px;
+    border-bottom:2px solid black;
+    background:#eaeaea;
+}
+
+.booking-item{
+    padding:20px;
+    font-size:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.cancel-btn{
+    padding:6px 15px;
+    border-radius:20px;
+    border:2px solid black;
+    background:white;
+    cursor:pointer;
+}
+
+.cancel-btn:hover{
+    background:#1c3d6b;
+    color:white;
+}
+
+.booking-status{
+    color:green;
+    white-space:nowrap;
+    font-size: xx-large;
+
+}
+
+.booking-image img{
+    width:340px;
+    margin-top: 150px;
+    margin-right: 150px;
+}
+
+
+.home-btn{
+position:absolute;
+top:30px;
+right:40px;
+padding:10px 20px;
+border:2px solid black;
+border-radius:10px;
+background:white;
+text-decoration:none;
+color:black;
+font-size:14px;
+margin-top: 40px;}
+
+.home-btn:hover{
+background:#1c3d6b;
+color:white;
+}
+
+/* mobilanpassning för sista sidan */
+
+@media (max-width: 1459px){
+
+.bookings-layout{
+    flex-direction:column;
+    align-items:center;
+}
+
+.bookings-box{
+    width:100%;
+    transform: translateX(-4px);
+
+}
+
+.booking-status{
+    margin-top:20px;
+    text-align:center;
+    font-size: x-large;
+}
+
+.booking-image{
+    display:none;
+}
+
+.home-btn{
+    position:static;
+    margin-bottom:20px;
 }
 
 }
