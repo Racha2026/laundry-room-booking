@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Boka tvättid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<a href="index.html">
+    <button>Start</button>
+</a>
+
+<h1>Boka tvättid</h1>
+
+<!-- Felmeddelande / bekräftelse -->
+<div id="message"></div>
+
+<!-- Tider -->
+<label>Datum:</label>
+<input type="date" id="date" required onchange="disableBookedTimes()">
+
+<br><br>
+
+<div id="times">
+    <label><input type="radio" name="time" value="09-12">09:00 - 12:00</label><br>
+    <label><input type="radio" name="time" value="12-15">12:00 - 15:00</label><br>
+    <label><input type="radio" name="time" value="15-18">15:00 - 18:00</label><br>
+    <label><input type="radio" name="time" value="18-21">18:00 - 21:00</label><br>
+</div>
+
+<!-- Lägenhetsnummer -->
+<input type="text" id="apartment" placeholder="Ange ditt lägenhetsnummer">
+
+<br><br>
+
+<!-- Bekräfta-knapp -->
+<button onclick="bookTime()">Bekräfta</button>
+
+<br><br>
+
+<a href="overview.html">
+    <button>Se alla bokningar</button>
+</a>
+
+<script src="js/app.js"></script>
+</body>
+</html>
+
