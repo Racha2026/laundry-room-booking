@@ -46,6 +46,8 @@ h1 {
     padding:12px 30px;
     font-size:16px;
     text-decoration:none;
+    display:inline-block;
+    margin:10px;
 }
 
 /* Effekt när musen är över knappen */
@@ -100,7 +102,6 @@ h1 {
 .confirm-box{
     position:absolute;
     right:40px;
-    margin-top: 55px;
 }
 
 .confirm-btn{
@@ -182,24 +183,15 @@ color:white;
     margin-top:30px;
 }
 
-.error-message{
-    color:red;
-    font-size:14px;
-    margin-top: -110px;
-    margin-left: 400px;
-    white-space:nowrap;
-    transform: translateX(100px);
-}
 
 .apartment-input{
     width:100%;
     padding:15px;
     border-radius:25px;
     border:2px solid black;
-    margin-left: 380px;
-    margin-top: -1px;
+    margin-left: 460px;
     background-color: rgba(9, 175, 175, 0.144);
-    transform: translateX(100px);
+    transform: translateY(-100px);
 }
 
 /* right side */
@@ -210,6 +202,16 @@ color:white;
     margin-right: 150px;
     transform: translateY(-150px);
 }
+
+/* Message från JavaScript */
+#message{
+color:red;
+font-size:15px;
+transform: translateY(-100px);
+margin-left: 470px;
+white-space: nowrap;
+}
+
 
 /* mobilanpassning */
 
@@ -269,7 +271,6 @@ color:white;
     text-align:center;
     font-size:36px;
     margin-bottom:40px;
-
     color:white;
     font-style:italic;
     width:100%;
@@ -295,9 +296,17 @@ color:white;
     font-size:22px;
     border-bottom:2px solid black;
     background:#eaeaea;
+
 }
 
-.booking-item{
+#bookingList{
+    list-style:none;
+    padding:0px;
+    margin:0px;
+    
+}
+
+#bookingList li{
     padding:20px;
     font-size:20px;
     display:flex;
@@ -305,7 +314,7 @@ color:white;
     align-items:center;
 }
 
-.cancel-btn{
+#bookingList button{
     padding:6px 15px;
     border-radius:20px;
     border:2px solid black;
@@ -313,7 +322,7 @@ color:white;
     cursor:pointer;
 }
 
-.cancel-btn:hover{
+#bookingList button:hover{
     background:#1c3d6b;
     color:white;
 }
@@ -333,21 +342,22 @@ color:white;
 
 
 .home-btn{
-position:absolute;
-top:30px;
-right:40px;
-padding:10px 20px;
-border:2px solid black;
-border-radius:10px;
-background:white;
-text-decoration:none;
-color:black;
-font-size:14px;
-margin-top: 40px;}
+    position:absolute;
+    top:30px;
+    right:40px;
+    padding:10px 20px;
+    border:2px solid black;
+    border-radius:10px;
+    background:white;
+    text-decoration:none;
+    color:black;
+    font-size:14px;
+    margin-top: 40px;
+}
 
 .home-btn:hover{
-background:#1c3d6b;
-color:white;
+    background:#1c3d6b;
+    color:white;
 }
 
 /* mobilanpassning för sista sidan */
