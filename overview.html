@@ -19,27 +19,18 @@
             <div class="bookings-box">
 
                 <div class="bookings-date">
-                    22-03-2026 / Söndag
-                </div>
 
-                <div class="booking-item">
-                    Lägenhet 12 / 9:00 - 12:00
+                    <button class="day-btn" id="prev-day-overview">◀</button>
+                    <span id="overview-date">22-03-2026 / Söndag</span>
+                    <button class="day-btn" id="next-day-overview">▶</button>
+                    
                 </div>
-
-                <div class="booking-item">
-                    Lägenhet 10 / 12:00 - 15:00
-                </div>
-
-                <div class="booking-item">
-                    Lägenhet 8 / 15:00 - 18:00
-                    <button class="cancel-btn">Avboka</button>
-                </div>
+                
+                <ul id="bookingList"></ul>
 
             </div>
 
-            <div class="booking-status">
-                <p>Bokningen har genomförts</p>
-            </div>
+            <div class="booking-status"></div>
 
             <div class="booking-image">
                 <img src="images/TM1.JPG" alt="Tvättmaskin">
@@ -48,6 +39,8 @@
         </div>
 
     </div>
+
+    <script src="js/app.js"></script>
 
 </body>
 </html>
