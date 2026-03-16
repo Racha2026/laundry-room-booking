@@ -2,7 +2,10 @@
 function bookTime() {
 
     const messageDiv = document.getElementById("message");
-    const date = document.getElementById("date").value;
+    // Hämtar datumet från texten som visas på sidan
+    const fullDate = document.getElementById("date-text").textContent;
+    // Tar bara själva datumet utan veckodag
+    const date = fullDate.split(" / ")[0];
 
     if(date === ""){
         messageDiv.textContent = "Välj datum";
@@ -53,10 +56,10 @@ function bookTime() {
 
     // Spara tillbaka till sessionStorage
     sessionStorage.setItem("bookings", JSON.stringify(bookings));
-
-    // Visa bekräftelse
-    messageDiv.textContent = `Bokningen för ${date} ${time} är sparad!`;
-    messageDiv.style.color = "green";
+    // Sparar bokningsmeddelandet så det kan visas på nästa sida
+    sessionStorage.setItem("bookingMessage", "Din bokning har sparats ✓.");
+    // Skickar användaren till sidan med alla bokningar
+    window.location.href = "overview.html";
 
     // Rensa formuläret
     document.getElementById("apartment").value = "";
@@ -64,7 +67,6 @@ function bookTime() {
 
     //Uppdatera bokade tider direkt
     disableBookedTimes();
-
 }
 
 // Funktion för att visa alla bokningar på overview-sidan
@@ -79,37 +81,33 @@ function showBookings() {
     list.innerHTML = "";
 
     // Hämta bokningar från sessionStorage
-    let bookings = JSON.parse(sessionStorage.getItem("bookings")) || [];
+    const bookings = JSON.parse(sessionStorage.getItem("bookings")) || [];
 
-    // Sorterar bokningar efter datum och tid
-    bookings.sort(function(a, b){
+    // Hämta datumet som visas på overview-sidan
+    const fullDate = document.getElementById("overview-date").textContent;
+    const selectedDate = fullDate.split(" / ")[0];
 
-        if(a.date === b.date){
-            return a.time.localeCompare(b.time);
-        }
-
-        return a.date.localeCompare(b.date);
+    // Filtrera bokningar för valt datum
+    const todaysBookings = bookings.filter(function(b){
+    return b.date === selectedDate;
     });
 
+
     // Om inga bokningar finns
-    if(bookings.length === 0){
-        list.innerHTML = "Inga bokningar ännu";
+    if(todaysBookings.length === 0){
+        list.innerHTML = "<li>Inga bokningar denna dag</li>";
         return;
     }
 
-    // Loopa igenom alla bokningar
-    bookings.forEach(function(b, index) {
-
+    // Visar bara bokningar för det valda datumet
+    todaysBookings.forEach(function(b,index){
         const li = document.createElement("li");
-
-        li.textContent = "Lägenhet " + b.apartment + " / " + b.date + " " + b.time + " ";
-
-        // Skapa avbokningsknapp
+        li.textContent = "Lägenhet " + b.apartment + " / " + b.time + " ";
         const button = document.createElement("button");
         button.textContent = "Avboka";
 
-        button.onclick = function() {
-            cancelBooking(index);
+        button.onclick = function(){
+        cancelBooking(index);
         };
 
         li.appendChild(button);
@@ -147,9 +145,10 @@ function disableBookedTimes(){
         radio.parentElement.style.color = "black";
     });
 
-    // Hämta valt datum
-    const selectedDate = document.getElementById("date").value;
-
+    // Hämtar valt datum från bokningssidan
+    const fullDate = document.getElementById("date-text").textContent;
+    const selectedDate = fullDate.split(" / ")[0];
+    
     // Hämta bokningar
     const bookings = JSON.parse(sessionStorage.getItem("bookings")) || [];
 
@@ -171,13 +170,77 @@ function disableBookedTimes(){
     });
 }
 
-// Sätt dagens datum som minsta valbara datum
-const dateInput = document.getElementById("date");
-
-if(dateInput){
-    dateInput.min = new Date().toISOString().split("T")[0];
-}
 
 // Körs när sidan laddas
 showBookings();
 disableBookedTimes();
+
+const prevBtn = document.getElementById("prev-day");
+const nextBtn = document.getElementById("next-day");
+const dateText = document.getElementById("date-text");
+
+let currentDate = new Date();
+
+function updateDateDisplay(){
+    const options = { weekday: 'long' };
+    const dayName = currentDate.toLocaleDateString("sv-SE", options);
+    const dateString = currentDate.toLocaleDateString("sv-SE");
+
+    dateText.textContent = dateString + " / " + dayName;
+}
+
+if(prevBtn && nextBtn && dateText){
+
+    updateDateDisplay();
+
+prevBtn.onclick = function(){
+    currentDate.setDate(currentDate.getDate() - 1);
+    updateDateDisplay();
+    disableBookedTimes(); // Uppdaterar vilka tider som är bokade
+}
+
+nextBtn.onclick = function(){
+    currentDate.setDate(currentDate.getDate() + 1);
+    updateDateDisplay();
+    disableBookedTimes(); // Uppdaterar vilka tider som är bokade
+}
+}
+
+const status = document.querySelector(".booking-status");
+const msg = sessionStorage.getItem("bookingMessage");
+
+// Visa bokningsmeddelande på overview-sidan
+if(status && msg){
+    status.textContent = msg;
+    sessionStorage.removeItem("bookingMessage");
+}
+
+const prevOverview = document.getElementById("prev-day-overview");
+const nextOverview = document.getElementById("next-day-overview");
+const overviewDate = document.getElementById("overview-date");
+
+let overviewCurrentDate = new Date();
+
+// Gör det möjligt att bläddra mellan olika datum i overview-sidan
+function updateOverviewDate(){
+    const options = { weekday: 'long' };
+    const dayName = overviewCurrentDate.toLocaleDateString("sv-SE", options);
+    const dateString = overviewCurrentDate.toLocaleDateString("sv-SE");
+    overviewDate.textContent = dateString + " / " + dayName;
+}
+
+if(prevOverview && nextOverview){
+    updateOverviewDate();
+    prevOverview.onclick = function(){
+        overviewCurrentDate.setDate(overviewCurrentDate.getDate() - 1);
+        updateOverviewDate();
+        showBookings();
+    };
+
+    nextOverview.onclick = function(){
+        overviewCurrentDate.setDate(overviewCurrentDate.getDate() + 1);
+        updateOverviewDate();
+        showBookings();
+    };
+
+}
