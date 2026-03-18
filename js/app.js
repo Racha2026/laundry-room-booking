@@ -171,10 +171,6 @@ function disableBookedTimes(){
 }
 
 
-// Körs när sidan laddas
-showBookings();
-disableBookedTimes();
-
 const prevBtn = document.getElementById("prev-day");
 const nextBtn = document.getElementById("next-day");
 const dateText = document.getElementById("date-text");
@@ -244,3 +240,9 @@ if(prevOverview && nextOverview){
     };
 
 }
+
+// Körs när sidan laddas
+window.onload = function() {
+    showBookings();
+    disableBookedTimes();
+};
